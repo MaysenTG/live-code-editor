@@ -2,7 +2,7 @@
   "name": "code-editor",
   "version": "0.1.0",
   "private": false,
-  "homepage": "http://maysentg.github.io/live-web-code-editor/",
+  "homepage": "http://maysentg.github.io/live-web-code-editor",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
