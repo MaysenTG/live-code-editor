@@ -5,16 +5,18 @@ import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/keymap/sublime';
 import 'codemirror/theme/monokai.css';
 
+import WebPageModal from './fullScreenPreview';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 class MarkdownEditor extends React.Component {
   constructor(props) {
     super(props);
     this.handleHTMLChange = this.handleHTMLChange.bind(this);
     this.handleCSSChange = this.handleCSSChange.bind(this);
-    this.state = { htmlValue: '<H1>This is a live code editor</H1>',  cssValue: 'H1 {\n   color: red;\n}\n'};
+    this.state = {visible: false, htmlValue: '<H1>This is a live code editor</H1>',  cssValue: 'H1 {\n   color: red;\n}\n'};
   }
 
   handleHTMLChange(e) {
-    //this.setState({ htmlValue: CodeMirror.getValue });
      this.setState({ htmlValue: e.getValue('') });
   }
   
@@ -22,9 +24,10 @@ class MarkdownEditor extends React.Component {
     this.setState({ cssValue: e.getValue('') });
   }
   
-  useEffect() {
-    CodeMirror.closeTags();
-  }
+  
+  updateVisibility = () => {
+    this.setState({ visible: !this.state.visible })
+  };
 
   render() {
     return (
@@ -41,8 +44,13 @@ class MarkdownEditor extends React.Component {
         
         <div id="codePreview" className="editorBox">
           <p className="editorLabel">Live View</p>
-          <iframe title="CodePreview" id="iframePreview" srcDoc={"<html><head><style>"+this.state.cssValue + "</style></head><body>"+this.state.htmlValue+"</body</html>"} src="preview.html">test</iframe>
+          <button id="fullscreenLabel" onClick={this.updateVisibility}>Full Screen</button>
+          <iframe title="CodePreview" id="iframePreview" srcDoc={"<html><head><style>"+this.state.cssValue + "</style></head><body>"+this.state.htmlValue+"</body</html>"} src="preview.html"></iframe>
+          
+          <WebPageModal show={this.state.visible} onHide={this.updateVisibility} css={this.state.cssValue} html={this.state.htmlValue}/>
         </div>
+        
+        
       </div>
     );
   }

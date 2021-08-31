@@ -19,14 +19,29 @@
   font-size: 1rem;
   color: white;
   z-index: 2;
-  top: 0;
+  bottom: 0;
   right: 0;
   border: 1px solid grey;
   padding: 8px;
-  margin-top: 0;
+  margin-bottom: 0;
   background-color: #272822;
 }
 
+#fullscreenLabel {
+  position: absolute;
+  font-size: 1rem;
+  color: white;
+  z-index: 2;
+  bottom: 0;
+  border: 1px solid grey;
+  padding: 8px;
+  margin-bottom: 0;
+  background-color: #272822;
+}
+
+#fullscreenLabel:hover {
+  background-color: grey;
+}
 
 .editorBox {
   position: relative;
@@ -52,6 +67,10 @@
 
 #cssBox {
   grid-area: c;
+}
+
+modalTitle {
+  text-align: center !important;
 }
 
 @media only screen and (max-width: 800px) {
