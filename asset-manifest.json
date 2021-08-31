@@ -18,8 +18,8 @@
     "runtime-main.js": "/live-web-code-editor/static/js/runtime-main.ecd88f99.js",
     "runtime-main.js.map": "/live-web-code-editor/static/js/runtime-main.ecd88f99.js.map",
     "static/css/8.99cb5a69.chunk.css": "/live-web-code-editor/static/css/8.99cb5a69.chunk.css",
-    "static/js/8.3bfad962.chunk.js": "/live-web-code-editor/static/js/8.3bfad962.chunk.js",
-    "static/js/8.3bfad962.chunk.js.map": "/live-web-code-editor/static/js/8.3bfad962.chunk.js.map",
+    "static/js/8.ee6de761.chunk.js": "/live-web-code-editor/static/js/8.ee6de761.chunk.js",
+    "static/js/8.ee6de761.chunk.js.map": "/live-web-code-editor/static/js/8.ee6de761.chunk.js.map",
     "static/js/9.76345411.chunk.js": "/live-web-code-editor/static/js/9.76345411.chunk.js",
     "static/js/9.76345411.chunk.js.map": "/live-web-code-editor/static/js/9.76345411.chunk.js.map",
     "static/js/10.78ded192.chunk.js": "/live-web-code-editor/static/js/10.78ded192.chunk.js",
@@ -253,12 +253,12 @@
     "index.html": "/live-web-code-editor/index.html",
     "static/css/8.99cb5a69.chunk.css.map": "/live-web-code-editor/static/css/8.99cb5a69.chunk.css.map",
     "static/css/main.82f7ebad.chunk.css.map": "/live-web-code-editor/static/css/main.82f7ebad.chunk.css.map",
-    "static/js/8.3bfad962.chunk.js.LICENSE.txt": "/live-web-code-editor/static/js/8.3bfad962.chunk.js.LICENSE.txt"
+    "static/js/8.ee6de761.chunk.js.LICENSE.txt": "/live-web-code-editor/static/js/8.ee6de761.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ecd88f99.js",
     "static/css/8.99cb5a69.chunk.css",
-    "static/js/8.3bfad962.chunk.js",
+    "static/js/8.ee6de761.chunk.js",
     "static/css/main.82f7ebad.chunk.css",
     "static/js/main.eda8db9d.chunk.js"
   ]
