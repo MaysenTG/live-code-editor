@@ -18,7 +18,7 @@ function HeadingNav(props) {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                     <Nav onSelect={(selectedKey) => alert(`${selectedKey}`)}>
-                        <Nav.Link eventKey={"WARNING: DOES NOT SAVE: Work In Progress"} href="/">Save</Nav.Link>
+                        <Nav.Link eventKey={"WARNING: DOES NOT SAVE: Work In Progress"} href="/live-web-code-editor/">Save</Nav.Link>
                         <Nav.Item>
                             <Nav.Link eventKey={beautify(`${props.wholeHtml}`, {format: 'html'})} title="Item">
                                 View Source Code
