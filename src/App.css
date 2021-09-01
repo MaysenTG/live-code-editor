@@ -1,8 +1,8 @@
 .App {
   box-sizing: content-box;
-  height: 85vh;
-  width: 95vw;
   margin: 0 auto;
+  height: 80vh;
+  width: 95vw;
   display: grid;
   grid-row-gap: 0.75rem;
   grid-template-columns: repeat(4, 25%);
@@ -14,6 +14,10 @@
     "c c a a";
 }
 
+#main {
+  margin-top: 2ch;
+}
+
 .editorLabel {
   position: absolute;
   font-size: 1rem;
@@ -22,9 +26,10 @@
   bottom: 0;
   right: 0;
   border: 1px solid grey;
-  padding: 8px;
+  padding: 4px 8px;
   margin-bottom: 0;
   background-color: #272822;
+  border-top-left-radius: 4px;
 }
 
 #fullscreenLabel {
@@ -36,11 +41,17 @@
   border: 1px solid grey;
   padding: 8px;
   margin-bottom: 0;
-  background-color: #272822;
+  background-color: black;
+  border-top-right-radius: 4px;
 }
 
 #fullscreenLabel:hover {
   background-color: grey;
+}
+
+#liveViewLabel {
+  color: black;
+  background-color: white;
 }
 
 .editorBox {
@@ -93,5 +104,37 @@ modalTitle {
 
   #cssBox {
     grid-area: a;
+  }
+}
+
+@media only screen and (max-height: 300px) {
+  .App {
+    grid-template-areas:
+      ". . . ."
+      "b b b b"
+      "b b b b"
+      "a a a a"
+      "a a a a"
+      "c c c c"
+      "c c c c"
+      "d d d d"
+      "d d d d";
+  }
+
+  #codePreview {
+    grid-area: c;
+    margin: 0;
+  }
+
+  #htmlBox {
+    grid-area: b;
+  }
+
+  #cssBox {
+    grid-area: a;
+  }
+
+  .editorBox {
+    margin: 0.2rem;
   }
 }

@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import HeadingNav from './Header';
 
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/keymap/sublime';
@@ -8,7 +9,7 @@ import 'codemirror/theme/monokai.css';
 import WebPageModal from './fullScreenPreview';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class MarkdownEditor extends React.Component {
+class LiveWebEditor extends React.Component {
   constructor(props) {
     super(props);
     this.handleHTMLChange = this.handleHTMLChange.bind(this);
@@ -31,29 +32,30 @@ class MarkdownEditor extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="editorBox" id="htmlBox">
-          <p className="editorLabel">HTML</p>
-          <CodeMirror value={this.state.htmlValue} options={{theme: 'monokai', keyMap: 'sublime', mode: 'html', autoCloseTags: true, autoCloseBrackets: true, matchTags: false}} onChange={this.handleHTMLChange}/>
-        </div>
-        
-        <div className="editorBox" id="cssBox">
-          <p className="editorLabel">CSS</p>
-          <CodeMirror value={this.state.cssValue} options={{theme: 'monokai', keyMap: 'sublime', mode: 'css'}} onChange={this.handleCSSChange}/>
-        </div>
-        
-        <div id="codePreview" className="editorBox">
-          <p className="editorLabel">Live View</p>
-          <button id="fullscreenLabel" onClick={this.updateVisibility}>Full Screen</button>
-          <iframe title="CodePreview" id="iframePreview" srcDoc={"<html><head><style>"+this.state.cssValue + "</style></head><body>"+this.state.htmlValue+"</body</html>"} src="preview.html"></iframe>
+      <div id="main">
+        <HeadingNav css={this.state.cssValue} html={this.state.htmlValue} wholeHtml={"<html><head><meta charset=utf-8><title>Live Editor</title><style>"+this.state.cssValue + "</style></head><body>"+this.state.htmlValue+"</body></html>"}/>
+        <div className="App">
+          <div className="editorBox" id="htmlBox">
+            <p className="editorLabel">HTML</p>
+            <CodeMirror value={this.state.htmlValue} options={{theme: 'monokai', keyMap: 'sublime', mode: 'html', autoCloseTags: true, autoCloseBrackets: true, matchTags: false}} onChange={this.handleHTMLChange}/>
+          </div>
           
-          <WebPageModal show={this.state.visible} onHide={this.updateVisibility} css={this.state.cssValue} html={this.state.htmlValue}/>
+          <div className="editorBox" id="cssBox">
+            <p className="editorLabel">CSS</p>
+            <CodeMirror value={this.state.cssValue} options={{theme: 'monokai', keyMap: 'sublime', mode: 'css'}} onChange={this.handleCSSChange}/>
+          </div>
+          
+          <div id="codePreview" className="editorBox">
+            <p className="editorLabel" id="liveViewLabel">Live View</p>
+            <button id="fullscreenLabel" onClick={this.updateVisibility}>Full Screen</button>
+            <iframe title="CodePreview" id="iframePreview" srcDoc={"<html><head><meta charset=utf-8><title>Live Editor</title><style>"+this.state.cssValue + "</style></head><body>"+this.state.htmlValue+"</body></html>"} src="preview.html"></iframe>
+            
+            <WebPageModal show={this.state.visible} onHide={this.updateVisibility} css={this.state.cssValue} html={this.state.htmlValue}/>
+          </div>
         </div>
-        
-        
       </div>
     );
   }
 }
 
-export default MarkdownEditor;
+export default LiveWebEditor;
