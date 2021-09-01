@@ -3,6 +3,8 @@ import React from 'react';
 import HeadingNav from './Header';
 
 import CodeMirror from '@uiw/react-codemirror';
+import 'codemirror/addon/edit/closebrackets';
+import 'codemirror/addon/edit/closetag';
 import 'codemirror/keymap/sublime';
 import 'codemirror/theme/monokai.css';
 
@@ -37,12 +39,12 @@ class LiveWebEditor extends React.Component {
         <div className="App">
           <div className="editorBox" id="htmlBox">
             <p className="editorLabel">HTML</p>
-            <CodeMirror value={this.state.htmlValue} options={{theme: 'monokai', keyMap: 'sublime', mode: 'html', autoCloseTags: true, autoCloseBrackets: true, matchTags: false}} onChange={this.handleHTMLChange}/>
+            <CodeMirror value={this.state.htmlValue} options={{theme: 'monokai', keyMap: 'sublime', mode: 'html', autoCloseTags: true}} onChange={this.handleHTMLChange}/>
           </div>
           
           <div className="editorBox" id="cssBox">
             <p className="editorLabel">CSS</p>
-            <CodeMirror value={this.state.cssValue} options={{theme: 'monokai', keyMap: 'sublime', mode: 'css'}} onChange={this.handleCSSChange}/>
+            <CodeMirror value={this.state.cssValue} options={{theme: 'monokai', keyMap: 'sublime', mode: 'css', autoCloseBrackets: true}} onChange={this.handleCSSChange}/>
           </div>
           
           <div id="codePreview" className="editorBox">
