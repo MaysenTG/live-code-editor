@@ -10,17 +10,25 @@ import Container from 'react-bootstrap/Container';
 import beautify from 'beautify';
 
 function HeadingNav(props) {
+    
+    function saveHTML(){
+        localStorage.setItem('LiveWebDataHTML', props.html)
+        localStorage.setItem('LiveWebDataCSS', props.css)
+    }
+    
     return (
-        <Navbar {...props} fluid collapseOnSelect expand="xl">
+        <Navbar {...props} fluid="true" collapseOnSelect expand="xl">
             <Container>
             <Navbar.Brand href="#home">Live HTML/CSS/JS Webpage Editor</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                     <Nav onSelect={(selectedKey) => alert(`${selectedKey}`)}>
-                        <Nav.Link eventKey={"WARNING: DOES NOT SAVE: Work In Progress"} href="/live-web-code-editor/">Save</Nav.Link>
                         <Nav.Item>
-                            <Nav.Link eventKey={beautify(`${props.wholeHtml}`, {format: 'html'})} title="Item">
+                            <Nav.Link eventKey={"Data has been saved!"} onClick={saveHTML} href="/live-web-code-editor/">Save</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey={beautify(`${props.wholehtml}`, {format: 'html'})} title="Item">
                                 View Source Code
                             </Nav.Link>
                         </Nav.Item>

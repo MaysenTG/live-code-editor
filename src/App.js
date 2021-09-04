@@ -4,7 +4,7 @@ import HeadingNav from './Header';
 
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/addon/edit/closebrackets';
-import 'codemirror/addon/edit/closetag';
+import 'codemirror/addon/edit/closetag'
 import 'codemirror/keymap/sublime';
 import 'codemirror/theme/monokai.css';
 
@@ -16,7 +16,16 @@ class LiveWebEditor extends React.Component {
     super(props);
     this.handleHTMLChange = this.handleHTMLChange.bind(this);
     this.handleCSSChange = this.handleCSSChange.bind(this);
-    this.state = {visible: false, htmlValue: '<H1>This is a live code editor</H1>',  cssValue: 'H1 {\n   color: red;\n}\n'};
+    
+    var htmlData = localStorage.getItem('LiveWebDataHTML');
+    var cssData = localStorage.getItem('LiveWebDataCSS');
+    
+    if(htmlData && cssData){
+      this.state = {visible: false, htmlValue: htmlData,  cssValue: cssData}; 
+    }
+    else {
+      this.state = {visible: false, htmlValue: "<H1>This is a live code editor!</H1>",  cssValue: "H1 {\n  color: red;\n}"};
+    }
   }
 
   handleHTMLChange(e) {
@@ -27,7 +36,6 @@ class LiveWebEditor extends React.Component {
     this.setState({ cssValue: e.getValue('') });
   }
   
-  
   updateVisibility = () => {
     this.setState({ visible: !this.state.visible })
   };
@@ -35,7 +43,7 @@ class LiveWebEditor extends React.Component {
   render() {
     return (
       <div id="main">
-        <HeadingNav css={this.state.cssValue} html={this.state.htmlValue} wholeHtml={"<html><head><meta charset=utf-8><title>Live Editor</title><style>"+this.state.cssValue + "</style></head><body>"+this.state.htmlValue+"</body></html>"}/>
+        <HeadingNav css={this.state.cssValue} html={this.state.htmlValue} wholehtml={"<html><head><meta charset=utf-8><title>Live Editor</title><style>"+this.state.cssValue + "</style></head><body>"+this.state.htmlValue+"</body></html>"}/>
         <div className="App">
           <div className="editorBox" id="htmlBox">
             <p className="editorLabel">HTML</p>
